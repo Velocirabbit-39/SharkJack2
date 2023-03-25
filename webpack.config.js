@@ -35,6 +35,14 @@ module.exports = {
               }
             },
             {
+                test: /\.(png|jpe?g|gif)$/i,
+                use: [
+                  {
+                    loader: 'file-loader',
+                  },
+                ],
+            },
+            {
               test: /\.css$/i,
               use: [
                 "style-loader",
@@ -42,5 +50,10 @@ module.exports = {
               ]
             }
         ]
-    }
+    },
+    plugins:[
+        new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, './client/index.html')
+        })
+    ],
 };
