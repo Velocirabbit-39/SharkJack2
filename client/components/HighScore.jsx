@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const HighScore = (props) => {
     return (
         <div className='highScoreContainer'>
