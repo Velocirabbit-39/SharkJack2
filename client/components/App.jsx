@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from './NavBar.jsx';
 import Game from './Game.jsx';
+import Login from './Login.jsx';
 import '../style.css';
 
 
@@ -9,16 +10,12 @@ function App() {
 
   return (
     <div>
-        {/* <NavBar /> */}
+        <NavBar />
+
         <Game />
     </div>
   )
 
 }
-
-
-
-
-
 
 export default App;

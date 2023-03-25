@@ -6,6 +6,11 @@ import PlayerCredits from './PlayerCredits.jsx';
 import Table from './Table.jsx';
 
 const Game = (props) => {
+
+    const handleClick = () => {
+        // ...dostuff
+    }
+
     return (
         <div className='displayContainer'>
             <PlayerCredits />
@@ -16,5 +21,8 @@ const Game = (props) => {
         </div>
     )
 }
+
+
+
 
 export default Game;
