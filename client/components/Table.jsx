@@ -1,25 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Card from './Card.jsx';
 // import table from "../assets/table.png";
+import cardImg from './../assets/cardImageFolder/2_of_clubs.png';
+import { v4 as uuidv4 } from 'uuid';
 
 
 const Table = (props) => {
 
+  const [dealerHandArr, setDealerHandArr] = useState([cardImg]);
+
   return (
-    
     <div className='tableContainer'>
-
-        <h2>Table</h2>
-        <img src={table} style={{height:100, width: 'auto'}} alt="table"  />
-
-
-          <div className='dealerCard1'>Card 1</div>
-            <img />
-
-          <div className='dealerCard2'>Card 2</div>
-            <img />
-            
-
-
+      { dealerHandArr.map((el) => <Card key={uuidv4()} cardSrc={cardImg} />) }
     </div>
   )
 }

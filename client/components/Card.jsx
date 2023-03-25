@@ -2,9 +2,7 @@ import React from 'react';
 
 const Card = (props) => {
     return (
-        <div className='cardContainer'>
-            <img src="" alt="card" srcSet="" />
-        </div>
+        <img className='cardStyle m-4' src={props.cardSrc} alt="card" srcSet="" />
     )
 }
 
