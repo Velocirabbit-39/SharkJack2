@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import Dealer from './Dealer';
-import HighScore from './HighScore';
-import Player from './Player';
-import PlayerCredits from './PlayerCredits';
-
-
+import NavBar from './NavBar.jsx';
+import Game from './Game.jsx';
+import '../style.css';
 
 
 function App() {
-  const [cards, setCards] = useState([]);
+  // const [cards, setCards] = useState([]);
 
-
-
+  return (
+    <div>
+        {/* <NavBar /> */}
+        <Game />
+    </div>
+  )
 
 }
 

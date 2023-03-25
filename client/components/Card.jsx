@@ -1,12 +1,11 @@
 import React from 'react';
 
-const PlayerCredit = (props) => {
+const Card = (props) => {
     return (
-        <>
-            <h2>Credit: #</h2>
-            <h2>Turn: turn</h2>
-        </>
+        <div className='cardContainer'>
+
+        </div>
     )
 }
 
-export default PlayerCredit;
+export default Card;
