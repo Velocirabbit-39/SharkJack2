@@ -1,0 +1,34 @@
+.creditsContainer {
+    grid-area: "credits";
+}
+
+.scoresContainer {
+    grid-area: "scores";
+}
+
+.leftContainer {
+    grid-area: "left";
+}
+
+.tableContainer {
+    grid-area: "table";
+}
+
+.rightContainer {
+    grid-area: "right";
+}
+
+.userContainer {
+    grid-area: "user";
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "credits . scores"
+        ". dealer ."
+        "left table right"
+        ". user ."
+}
