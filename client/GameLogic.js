@@ -1,7 +1,7 @@
 const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
 
-const createDeck = () => {
+export const createDeck = () => {
 	const deck = [];
 	for (const suit of suits) {
 		for (const value of cardValues) {
@@ -11,14 +11,14 @@ const createDeck = () => {
 	return deck;
 }
 
-const shuffleDeck = (deck) => {
+export const shuffleDeck = (deck) => {
 	for (let i = deck.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[deck[i], deck[j]] = [deck[j], deck[i]];
 	}
 }
 
-const dealCard = (deck) => {
+export const dealCard = (deck) => {
 	return deck.pop();
 }
 
@@ -34,7 +34,7 @@ const getCardValue = (card) => {
 }
 
 
-const calculateHandScore = (hand) => {
+export const calculateHandScore = (hand) => {
 	let score = 0;
 	let aces = 0;
 	for (const card of hand) {
@@ -51,7 +51,7 @@ const calculateHandScore = (hand) => {
 }
 
 
-const getWinner = (playerHand, dealerHand) => {
+export const getWinner = (playerHand, dealerHand) => {
 	const playerScore = calculateHandScore(playerHand);
 	const dealerScore = calculateHandScore(dealerHand);
 
