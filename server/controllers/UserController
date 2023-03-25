@@ -1,0 +1,77 @@
+const mongo = require('mongoose');
+const user = require('./userModel');
+const User = require('./models/userModel.js');
+
+
+
+const UserController = {
+
+    createUser(req, res, next) {
+        console.log('we are in the createUser method')
+        const { username, password } = req.body;
+        User.create({username: username, password: password, money: 100})
+          .then((data) => {
+            return next();
+          })
+          .catch((err) => {
+            return next(err);
+          })
+
+    },
+
+    updateUser(req, res, next) {
+        const {username, money} = req.body;
+        User.findOneAndUpdate({username: username})
+          .then((user) => {
+            if(!user) {
+                res.locals.update = false;
+                return next();
+            }
+            else {
+                res.locals.update = {
+                    username: user.username,
+                    password: user.password,
+                    money: money
+                }
+                return next();
+            }
+          })
+          .catch((err) => {
+            return next(err);
+          })
+    },
+
+    logIn(req, res, next) {
+        const {username, password} = req.body;
+        User.findOne({username: username})
+          .then((user) => {
+            if (!user){
+                res.locals.status = false;
+                return next()
+            }
+            else{
+                User.comparePassword(password, (err, isMatch) => {
+                    if (err) return next(err);
+                    res.locals.status = isMatch;
+                    return next();
+                })
+                
+          }
+        })
+          .catch((err) => {
+            return next(err);
+          })
+          
+    }
+}
+
+
+
+
+
+
+
+
+
+
+module.exports = UserController;
