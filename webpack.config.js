@@ -10,14 +10,8 @@ module.exports = {
     },
     
     plugins: [new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, './index.html')
+        template: path.resolve(__dirname, './client/index.html')
     })],
-    devServer: {
-        proxy: {
-            '/libraries': 'http://localhost:3000'
-        },
-    },
-
     mode: process.env.NODE_ENV,
     module: {
         rules: [
