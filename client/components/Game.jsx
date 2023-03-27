@@ -12,7 +12,7 @@ import { createDeck, shuffleDeck, dealCard, calculateHandScore, getWinner, getCa
 
 const Game = (props) => {
     const [deck, setDeck] = useState(shuffleDeck(createDeck()));
-    const [score, setHandScore] = useState([]);
+    const [score, setHandScore] = useState('');
     const [dealerHand, setDealerHand] = useState([]);
     const [playerHand, setPlayerHand] = useState([]);
     const [isPlayerFinished, setIsPlayerFinished] = useState(false);
@@ -61,18 +61,13 @@ const Game = (props) => {
         );
     }
 
-    const standPlayerOnClick = (e) => {
-        console.log('clicked Stand');
-        
-    }
-
     return (
         <div className='displayContainer'>
             <PlayerCredits />
             <HighScore />
             <Dealer />
             <Table dealerHand={dealerHand}/>
-            <Player setIsPlayerFinished={setIsPlayerFinished} dealPlayerCardOnClick={dealPlayerCardOnClick} playerHand={playerHand}/>  
+            <Player winner={winner} setIsPlayerFinished={setIsPlayerFinished} dealPlayerCardOnClick={dealPlayerCardOnClick} playerHand={playerHand}/>  
         </div>
     )
 }
