@@ -7,6 +7,14 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+// should we use app.use(static) to get card images from backend?
+// Function to serve all static files
+// inside cardImage directory.
+console.log('dir', __dirname)
+app.use('/static', express.static(path.resolve(__dirname, 'public'))); 
+
+
 const uri =
   'mongodb+srv://jonathanvaldes570:thisismypassword@shark-jack-2.4mhezaq.mongodb.net/test';
 
@@ -23,8 +31,9 @@ mongoose.connection.once('open', () => {
 
 // Static GET
 app.use('/build', express.static(path.join(__dirname, '../build')));
+
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../index.html'));
+  res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 //routes request to endpoint user for login/signup functionality

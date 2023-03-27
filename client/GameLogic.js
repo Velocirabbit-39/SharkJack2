@@ -1,7 +1,7 @@
 const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
 
-const createDeck = () => {
+export const createDeck = () => {
 	const deck = [];
 	for (const suit of suits) {
 		for (const value of cardValues) {
@@ -11,14 +11,14 @@ const createDeck = () => {
 	return deck;
 }
 
-const shuffleDeck = (deck) => {
+export const shuffleDeck = (deck) => {
 	for (let i = deck.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[deck[i], deck[j]] = [deck[j], deck[i]];
 	}
 }
 
-const dealCard = (deck) => {
+export const dealCard = (deck) => {
 	return deck.pop();
 }
 
@@ -34,7 +34,7 @@ const getCardValue = (card) => {
 }
 
 
-const calculateHandScore = (hand) => {
+export const calculateHandScore = (hand) => {
 	let score = 0;
 	let aces = 0;
 	for (const card of hand) {
@@ -51,7 +51,7 @@ const calculateHandScore = (hand) => {
 }
 
 
-const getWinner = (playerHand, dealerHand) => {
+export const getWinner = (playerHand, dealerHand) => {
 	const playerScore = calculateHandScore(playerHand);
 	const dealerScore = calculateHandScore(dealerHand);
 
@@ -68,7 +68,7 @@ const getWinner = (playerHand, dealerHand) => {
 	}
 }
 
-const getCardImage = (c) => {
+export const getCardImage = (c) => {
 	const card = { ...c };
 	const pictureCards = {
 		'J': 'jack',
@@ -77,60 +77,61 @@ const getCardImage = (c) => {
 		'A': 'ace'
 	}
 	if (card.value in pictureCards) card.value = pictureCards[card.value]
-	const path = `./assets/card-pictures/${card.value}_of_${card.suit}.png`;
+	// const path = `../assets/card-pictures/${card.value}_of_${card.suit}.png`;
+	const path = `/static/cardImageFolder/${card.value}_of_${card.suit}.png`
 	return path;
 }
 
 
-const playBlackjack = () => {
-	const deck = createDeck();
-	shuffleDeck(deck);
+// const playBlackjack = () => {
+// 	const deck = createDeck();
+// 	shuffleDeck(deck);
 
-	const playerHand = [dealCard(deck), dealCard(deck)];
-	const dealerHand = [dealCard(deck), dealCard(deck)];
+// 	const playerHand = [dealCard(deck), dealCard(deck)];
+// 	const dealerHand = [dealCard(deck), dealCard(deck)];
 
-	let playerTurn = true;
+// 	let playerTurn = true;
 
-	while (playerTurn) {
-		console.log('Player hand:', playerHand);
-		console.log('Dealer hand:', dealerHand[0]);
+// 	while (playerTurn) {
+// 		console.log('Player hand:', playerHand);
+// 		console.log('Dealer hand:', dealerHand[0]);
 
-		const input = prompt('Do you want to (h)it or (s)tand?');
-		if (input === 'h') {
-			playerHand.push(dealCard(deck));
-			if (calculateHandScore(playerHand) > 21) {
-				playerTurn = false;
-			}
-		} else if (input === 's') {
-			playerTurn = false;
-		} else {
-			console.log('Invalid input, please enter h or s.');
-		}
-	}
+// 		const input = prompt('Do you want to (h)it or (s)tand?');
+// 		if (input === 'h') {
+// 			playerHand.push(dealCard(deck));
+// 			if (calculateHandScore(playerHand) > 21) {
+// 				playerTurn = false;
+// 			}
+// 		} else if (input === 's') {
+// 			playerTurn = false;
+// 		} else {
+// 			console.log('Invalid input, please enter h or s.');
+// 		}
+// 	}
 
-	while (calculateHandScore(dealerHand) < 17) {
-		dealerHand.push(dealCard(deck));
-	}
+// 	while (calculateHandScore(dealerHand) < 17) {
+// 		dealerHand.push(dealCard(deck));
+// 	}
 
-	console.log('Player final hand:', playerHand);
-	console.log('Dealer final hand:', dealerHand);
+// 	console.log('Player final hand:', playerHand);
+// 	console.log('Dealer final hand:', dealerHand);
 
-	console.log('player card images: ', getCardImage(playerHand[0]), getCardImage(playerHand[1]))
+// 	console.log('player card images: ', getCardImage(playerHand[0]), getCardImage(playerHand[1]))
 
-	const result = getWinner(playerHand, dealerHand);
-	if (result === 'Draw') {
-		console.log("It's a draw!");
-	} else {
-		console.log(`${result} wins!`);
-	}
-}
+// 	const result = getWinner(playerHand, dealerHand);
+// 	if (result === 'Draw') {
+// 		console.log("It's a draw!");
+// 	} else {
+// 		console.log(`${result} wins!`);
+// 	}
+// }
 
-const prompt = (question) => {
-	return readlineSync.question(question);
-}
+// const prompt = (question) => {
+// 	return readlineSync.question(question);
+// }
 
-try {
-	playBlackjack();
-} catch (err) {
-	console.error('Error:', err);
-}
+// try {
+// 	playBlackjack();
+// } catch (err) {
+// 	console.error('Error:', err);
+// }

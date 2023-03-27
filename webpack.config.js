@@ -10,14 +10,8 @@ module.exports = {
     },
     
     plugins: [new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, './index.html')
+        template: path.resolve(__dirname, './client/index.html')
     })],
-    devServer: {
-        proxy: {
-            '/user': 'http://localhost:3000'
-        },
-    },
-
     mode: process.env.NODE_ENV,
     module: {
         rules: [
@@ -56,4 +50,12 @@ module.exports = {
         template: path.resolve(__dirname, './client/index.html')
         })
     ],
+    devServer: {
+      proxy: {
+        '/static/**': {
+          target: 'http://localhost:3000/',
+          changeOrigin: true,
+        },
+      }
+    },
 };
