@@ -81,7 +81,7 @@ h1 {
 }
 
 .cardStyle {
-    object-fit: cover;
+    /* object-fit: cover; */
     width: 25%;
     height: auto;
 }

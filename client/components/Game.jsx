@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Dealer from './Dealer.jsx';
 import HighScore from './HighScore.jsx';
 import Player from './Player.jsx';
@@ -11,13 +11,42 @@ import { createDeck, shuffleDeck, dealCard, calculateHandScore, getWinner, getCa
 
 
 const Game = (props) => {
-    const [deck, setDeck] = useState(createDeck());
+    const [deck, setDeck] = useState(shuffleDeck(createDeck()));
     const [score, setHandScore] = useState([]);
     const [dealerHand, setDealerHand] = useState([]);
     const [playerHand, setPlayerHand] = useState([]);
+    const [isPlayerFinished, setIsPlayerFinished] = useState(false);
+    const [winner, setWinner] = useState('');
     
     // console.log('Starting Deck:', deck);
+    useEffect(() => {
+        const tmpDeck = [...deck];
+        const newPlayerHand = [];
+        const newDealerHand = []
 
+        newPlayerHand.push(dealCard(tmpDeck));
+        newDealerHand.push(dealCard(tmpDeck));
+        newPlayerHand.push(dealCard(tmpDeck));
+        newDealerHand.push(dealCard(tmpDeck));
+
+        setDeck(tmpDeck);
+        setDealerHand(newDealerHand);
+        setPlayerHand(newPlayerHand);
+        console.log(dealerHand, playerHand)
+    }, [])
+
+    useEffect(() => {
+        if (isPlayerFinished) {
+            // ... finish dealing dealer cards
+            const newDealerHand = [...dealerHand];
+            const newDeck = [...deck];
+            while (calculateHandScore(dealerHand) < 17) {
+		        newDealerHand.push(dealCard(newDeck));
+	        }
+            setDealerHand(newDealerHand);
+            setDeck(newDeck);
+        }
+    }, [isPlayerFinished])
     
     const dealPlayerCardOnClick = (e) => {
         console.log('dealPlayerCard called');
@@ -27,16 +56,23 @@ const Game = (props) => {
         const updatedPlayerCard = dealCard(tmpDeck);
         setDeck(tmpDeck);
         setPlayerHand([...playerHand, updatedPlayerCard]);
+        setWinner(
+            getWinner(playerHand, dealerHand)
+        );
     }
 
-    
+    const standPlayerOnClick = (e) => {
+        console.log('clicked Stand');
+        
+    }
+
     return (
         <div className='displayContainer'>
             <PlayerCredits />
             <HighScore />
-            <Dealer/>
-            <Table/>
-            <Player dealPlayerCardOnClick={dealPlayerCardOnClick} playerHand={playerHand}/>  
+            <Dealer />
+            <Table dealerHand={dealerHand}/>
+            <Player setIsPlayerFinished={setIsPlayerFinished} dealPlayerCardOnClick={dealPlayerCardOnClick} playerHand={playerHand}/>  
         </div>
     )
 }

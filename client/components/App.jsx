@@ -12,20 +12,20 @@ function App() {
 
 
 
-  if (!isLoggedIn) {
-    if(showCreateAccount){
-      return <Signup showCreateAccount={showCreateAccount} setIsLoggedIn={setIsLoggedIn}/>
-    }
+  // if (!isLoggedIn) {
+  //   if(showCreateAccount){
+  //     return <Signup showCreateAccount={showCreateAccount} setIsLoggedIn={setIsLoggedIn}/>
+  //   }
     
-    return (
-      <div>
-            <button onClick={() => setShowCreateAccount(true)}>
-              Don't have an account?
-            </button>
-            <Login setIsLoggedIn={setIsLoggedIn} />
-      </div>
-    );
-  }
+  //   return (
+  //     <div>
+  //           <button onClick={() => setShowCreateAccount(true)}>
+  //             Don't have an account?
+  //           </button>
+  //           <Login setIsLoggedIn={setIsLoggedIn} />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>

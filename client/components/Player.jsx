@@ -35,7 +35,7 @@ const Player = (props) => {
             </div>
             <div className='actionContainer'>
                 <button  onClick={props.dealPlayerCardOnClick} className="buttonHit btn btn-primary">Hit Me!</button>
-                <button className="buttonStand btn btn-primary">Stand</button>
+                <button onClick={() => props.setIsPlayerFinished(true)} className="buttonStand btn btn-primary">Stand</button>
             </div>
         </div>
     )

@@ -52,9 +52,12 @@ module.exports = {
     ],
     devServer: {
       proxy: {
-        '/static/**': {
+        '/**': {
           target: 'http://localhost:3000/',
           changeOrigin: true,
+          secure: false,
+          hot: true,
+          open: true
         },
       }
     },

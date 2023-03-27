@@ -16,6 +16,7 @@ export const shuffleDeck = (deck) => {
 		const j = Math.floor(Math.random() * (i + 1));
 		[deck[i], deck[j]] = [deck[j], deck[i]];
 	}
+	return deck;
 }
 
 export const dealCard = (deck) => {
