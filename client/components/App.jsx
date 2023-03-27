@@ -9,28 +9,29 @@ function App() {
   // const [cards, setCards] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showCreateAccount, setShowCreateAccount] = useState(false);
+  const [userObject, setUserObject] = useState({});
 
 
 
-  // if (!isLoggedIn) {
-  //   if(showCreateAccount){
-  //     return <Signup showCreateAccount={showCreateAccount} setIsLoggedIn={setIsLoggedIn}/>
-  //   }
+  if (!isLoggedIn) {
+    if(showCreateAccount){
+      return <Signup showCreateAccount={showCreateAccount} setIsLoggedIn={setIsLoggedIn}/>
+    }
     
-  //   return (
-  //     <div>
-  //           <button onClick={() => setShowCreateAccount(true)}>
-  //             Don't have an account?
-  //           </button>
-  //           <Login setIsLoggedIn={setIsLoggedIn} />
-  //     </div>
-  //   );
-  // }
+    return (
+      <div>
+            <button onClick={() => setShowCreateAccount(true)}>
+              Don't have an account?
+            </button>
+            <Login setIsLoggedIn={setIsLoggedIn} />
+      </div>
+    );
+  }
 
   return (
     <div>
       <NavBar />
-      <Game />
+      <Game user={userObject}/>
     </div>
   );
 }

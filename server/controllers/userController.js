@@ -28,6 +28,7 @@ const UserController = {
   },
 
   updateUser(req, res, next) {
+    console.log('i am here')
     const username = req.params.username;
     const { money, handsWon } = req.body;
     User.findOneAndUpdate({ username: username }, { money, handsWon }).then(
