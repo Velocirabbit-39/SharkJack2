@@ -12,7 +12,7 @@ import { createDeck, shuffleDeck, dealCard, calculateHandScore, getWinner, getCa
 
 const Game = (props) => {
     const [deck, setDeck] = useState(shuffleDeck(createDeck()));
-    const [score, setHandScore] = useState([]);
+    const [score, setHandScore] = useState('');
     const [dealerHand, setDealerHand] = useState([]);
     const [playerHand, setPlayerHand] = useState([]);
     const [isPlayerFinished, setIsPlayerFinished] = useState(false);
@@ -59,11 +59,6 @@ const Game = (props) => {
         const updatedPlayerCard = dealCard(tmpDeck);
         setDeck(tmpDeck);
         setPlayerHand([...playerHand, updatedPlayerCard]);
-    }
-
-    const standPlayerOnClick = (e) => {
-        console.log('clicked Stand');
-        
     }
 
     return (
