@@ -45,6 +45,9 @@ const Game = (props) => {
 	        }
             setDealerHand(newDealerHand);
             setDeck(newDeck);
+            setWinner(
+                getWinner(playerHand, dealerHand)
+            );
         }
     }, [isPlayerFinished])
     
@@ -56,9 +59,6 @@ const Game = (props) => {
         const updatedPlayerCard = dealCard(tmpDeck);
         setDeck(tmpDeck);
         setPlayerHand([...playerHand, updatedPlayerCard]);
-        setWinner(
-            getWinner(playerHand, dealerHand)
-        );
     }
 
     return (
@@ -67,7 +67,7 @@ const Game = (props) => {
             <HighScore />
             <Dealer />
             <Table dealerHand={dealerHand}/>
-            <Player winner={winner} setIsPlayerFinished={setIsPlayerFinished} dealPlayerCardOnClick={dealPlayerCardOnClick} playerHand={playerHand}/>  
+            <Player  winner={winner} user={props.user} setIsPlayerFinished={setIsPlayerFinished} dealPlayerCardOnClick={dealPlayerCardOnClick} playerHand={playerHand}/>  
         </div>
     )
 }

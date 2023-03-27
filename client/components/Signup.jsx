@@ -18,7 +18,7 @@ export default function Signup({ setIsLoggedIn }) {
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
-        setIsLoggedIn(true);
+        setIsLoggedIn(false);
         showCreateAccount(false);
       })
       .catch((err) => {
