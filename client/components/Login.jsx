@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import Signup from './Signup.jsx';
 
-export default function Login({ setIsLoggedIn, setUserObject }) {
+export default function Login({ setIsLoggedIn, setUserObject}) {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
-
 
   const handleSubmit = () => {
     //e.preventDefault();
     //post request to server to verify username and password
     const u = document.querySelector('#username').value;
     const p = document.querySelector('#password').value;
+    // console.log('have reached handleSubmit');
     fetch('/user/login', {
       method: 'POST',
       headers: {
@@ -26,7 +26,7 @@ export default function Login({ setIsLoggedIn, setUserObject }) {
       .then((response) => response.json())
       .then((data) => {
         if (data.status) {
-          setUserObject = data.user;
+          setUserObject(data.user);
           setIsLoggedIn(true);
         } else {
           let error = document.querySelector('.error');
@@ -37,9 +37,8 @@ export default function Login({ setIsLoggedIn, setUserObject }) {
     //if false display wrong username or password
   };
 
-
   return (
-    <div>
+    <div className='loginContainer'>
       <h1>Login </h1>
       <p className='error'>Wrong Username and Password</p>
       <label htmlFor='username'></label>

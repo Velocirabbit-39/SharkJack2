@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 
 //routes request to endpoint user for login/signup functionality
 app.use('/user', userRouter, (req, res) => {
-  res.status(200).json('temporary message')
+  res.status(200);
 });
 
 app.listen(3000, () => console.log('we listening'));

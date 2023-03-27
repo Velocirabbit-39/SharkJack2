@@ -8,11 +8,11 @@ router.post('/', userController.createUser, (req, res, next) => {
   return next();
 });
 
-router.patch('/:username', userController.updateUser, (req, res, next) => {
-  return next();
+router.patch('/:username', userController.updateUser, (req, res) => {
+  res.status(200).json({updated: res.locals.update})
 });
 
-router.post('/login', userController.logIn, (req, res, next) => {
+router.post('/login', userController.logIn, (req, res) => {
   res.status(200).json({status: res.locals.status, user: res.locals.user});
 });
 

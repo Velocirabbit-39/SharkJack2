@@ -56,6 +56,7 @@ export const getWinner = (playerHand, dealerHand) => {
 	const playerScore = calculateHandScore(playerHand);
 	const dealerScore = calculateHandScore(dealerHand);
 
+
 	if (playerScore > 21) {
 		return 'Dealer';
 	} else if (dealerScore > 21) {

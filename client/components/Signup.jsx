@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Signup({ setIsLoggedIn }) {
+export default function Signup({ setIsLoggedIn, setShowCreateAccount }) {
 
     const signup = () => {
     const u = document.querySelector('#username').value;
@@ -19,7 +19,7 @@ export default function Signup({ setIsLoggedIn }) {
       .then((data) => {
         console.log(data)
         setIsLoggedIn(false);
-        showCreateAccount(false);
+        setShowCreateAccount(false);
       })
       .catch((err) => {
         console.log(err);

@@ -3,8 +3,7 @@ import React from 'react';
 const HighScore = (props) => {
     return (
         <div className='highScoreContainer'>
-            <h2>Player High Scores: </h2>
-            <div>Fetch from server</div>
+            <button onClick={props.reset} className="newGame btn btn-primary">New Game</button>
         </div>
     )
 }

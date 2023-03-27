@@ -15,7 +15,7 @@ function App() {
 
   if (!isLoggedIn) {
     if(showCreateAccount){
-      return <Signup showCreateAccount={showCreateAccount} setIsLoggedIn={setIsLoggedIn}/>
+      return <Signup setShowCreateAccount={setShowCreateAccount} setIsLoggedIn={setIsLoggedIn}/>
     }
     
     return (
@@ -23,15 +23,17 @@ function App() {
             <button onClick={() => setShowCreateAccount(true)}>
               Don't have an account?
             </button>
-            <Login setIsLoggedIn={setIsLoggedIn} />
+            <Login setUserObject={setUserObject} setIsLoggedIn={setIsLoggedIn} />
       </div>
     );
   }
 
   return (
     <div>
-      <NavBar />
-      <Game user={userObject}/>
+      <Game 
+      setUserObject={setUserObject}
+      user={userObject}
+      />
     </div>
   );
 }
