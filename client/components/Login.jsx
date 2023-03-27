@@ -1,27 +1,66 @@
+import React, { useState } from 'react';
+import Signup from './Signup.jsx';
 
-import React, { useState } from "react"
+export default function Login({ setIsLoggedIn }) {
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  });
 
-export default function Login() {
-	const formData = useState({
-		username: '',
-		password: ''
-	});
-	return (
-		<div>
-			<form 
-				onSubmit={(e) => {
-					e.preventDefault()
-				}}
-			>
-				<h1>Login </h1>
-				<label htmlFor="username"></label>
-				<input id="username" placeholder="username" value={formData.username}></input>
-				<label htmlFor="password"></label>
-				<input id='password' placeholder="password" vlaue={formData.password}></input>
-        <button type='submit'>Submit</button>
-			</form>
-		</div>
-	)
+
+  const handleSubmit = () => {
+    //e.preventDefault();
+    //post request to server to verify username and password
+    const u = document.querySelector('#username').value;
+    const p = document.querySelector('#password').value;
+    fetch('/user/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: u,
+        password: p,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+		console.log('this is data', data)
+        if (data.status) {
+          setIsLoggedIn(true);
+        } else {
+          let error = document.querySelector('.error');
+          error.style.display = 'block';
+        }
+      });
+    //if true set is logged in to true
+    //if false display wrong username or password
+  };
+
+
+  return (
+    <div>
+      <h1>Login </h1>
+      <p className='error'>Wrong Username and Password</p>
+      <label htmlFor='username'></label>
+      <input
+        id='username'
+        // placeholder='username'
+        // value={formData.username}
+        // onChange={(e) => handleChange(e)}
+      ></input>
+      {/* <label htmlFor='password'></label> */}
+      <input
+        id='password'
+        // placeholder='password'
+        // value={formData.password}
+        // onChange={(e) => handleChange(e)}
+      ></input>
+      <button type='button' onClick={handleSubmit}>
+        Submit
+      </button>
+    </div>
+  );
 }
 
 /* <!-- Modal -->

@@ -39,4 +39,8 @@ h1 {
 .buttonStand {
 
 }
+.error{
+    display: none;
+    color: red;
+}
 
