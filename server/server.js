@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 //routes request to endpoint user for login/signup functionality
 app.use('/user', userRouter, (req, res) => {
-  res.status(200).json({ status: res.locals.status });
+  res.status(200).json('temporary message')
 });
 
 app.listen(3000, () => console.log('we listening'));

@@ -14,7 +14,7 @@ module.exports = {
     })],
     devServer: {
         proxy: {
-            '/libraries': 'http://localhost:3000'
+            '/user': 'http://localhost:3000'
         },
     },
 
