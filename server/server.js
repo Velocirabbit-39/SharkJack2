@@ -7,6 +7,14 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+// should we use app.use(static) to get card images from backend?
+// Function to serve all static files
+// inside cardImage directory.
+console.log('dir', __dirname)
+app.use('/static', express.static(path.resolve(__dirname, 'public'))); 
+
+
 const uri =
   'mongodb+srv://jonathanvaldes570:thisismypassword@shark-jack-2.4mhezaq.mongodb.net/test';
 

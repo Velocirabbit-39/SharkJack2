@@ -1,22 +1,11 @@
 import React, { useState } from 'react';
 import Card from './Card.jsx';
 import PlayerCredits from './PlayerCredits.jsx';
+import { v4 as uuidv4 } from 'uuid';
 
 
 
 const Player = (props) => {
-
-    const [playerHandArr, setPlayerHandArr] = useState([]);
-
-    const hit = () => {
-        //do something
-
-    }
-
-    const stand = () => {
-        //do something
-        
-    }
 
     const handleBet = (e) => {
         if (PlayerCredits < 0) {
@@ -42,11 +31,11 @@ const Player = (props) => {
                 <h2>Player name: </h2>
             </div>
             <div className='playerCardContaner'>
-                { playerHandArr.map((el) => <Card />)}
+                { props.playerHand.map((el) => <Card card={el} key={uuidv4()} />)}
             </div>
             <div className='actionContainer'>
-                <button  onClick={hit} className="buttonHit btn btn-primary">Hit Me!</button>
-                <button onClick={stand} className="buttonStand btn btn-primary">Stand</button>
+                <button  onClick={props.dealPlayerCardOnClick} className="buttonHit btn btn-primary">Hit Me!</button>
+                <button className="buttonStand btn btn-primary">Stand</button>
             </div>
         </div>
     )

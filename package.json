@@ -7,7 +7,7 @@
         "start": "nodemon server/server.js",
         "build": "NODE_ENV=production webpack",
         "dev": "NODE_ENV=development webpack serve & node server/server.js",
-        "front": "NODE_ENV=development webpack-dev-server --open --hot"
+        "front": "NODE_ENV=development webpack-dev-server --open --hot & node server/server.js"
     },
     "nodemonConfig": {
         "ignore": [
