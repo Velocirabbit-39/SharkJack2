@@ -13,7 +13,7 @@ router.patch('/:username', userController.updateUser, (req, res, next) => {
 });
 
 router.post('/login', userController.logIn, (req, res, next) => {
-  return next();
+  res.status(200).json({status: res.locals.status, user: res.locals.user});
 });
 
 router.get('/:username', userController.getUser, (req, res) => {

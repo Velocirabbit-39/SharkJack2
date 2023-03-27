@@ -12,7 +12,10 @@ const Table = (props) => {
 
   return (
     <div className='tableContainer'>
+
       { dealerHandArr.map((el) => <Card key={uuidv4()} cardSrc={cardImg} />) }
+
+
     </div>
   )
 }

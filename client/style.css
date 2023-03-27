@@ -55,6 +55,10 @@ h1 {
     width: 200px;
     text-align: center;
 }
+.error{
+    display: none;
+    color: red;
+}
 
 .betContainer {
     display: flex;

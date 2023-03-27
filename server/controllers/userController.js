@@ -58,7 +58,6 @@ const UserController = {
           user.comparePassword(password, (err, isMatch) => {
             if (err) return next(err);
             res.locals.status = isMatch;
-            console.log('this is status', res.locals.status);
             res.locals.user = user;
             return next();
           });
