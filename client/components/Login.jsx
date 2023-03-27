@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Signup from './Signup.jsx';
 
-export default function Login({ setIsLoggedIn }) {
+export default function Login({ setIsLoggedIn, setUserObject }) {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -25,8 +25,8 @@ export default function Login({ setIsLoggedIn }) {
     })
       .then((response) => response.json())
       .then((data) => {
-		console.log('this is data', data)
         if (data.status) {
+          setUserObject = data.user;
           setIsLoggedIn(true);
         } else {
           let error = document.querySelector('.error');
