@@ -7,13 +7,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Table = (props) => {
 
-  const [dealerHandArr, setDealerHandArr] = useState([]);
-  // console.log('cardImg:', cardImg);
-
+  console.log('dealer hand:', props.dealerHand);
   return (
     <div className='tableContainer'>
 
-      { dealerHandArr.map((el) => <Card key={uuidv4()} cardSrc={cardImg} />) }
+      { props.dealerHand.map((el) => <Card key={uuidv4()} card={el} />) }
 
 
     </div>
