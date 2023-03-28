@@ -4,7 +4,7 @@ export default function Signup({ setIsLoggedIn, setShowCreateAccount }) {
   const signup = () => {
     const u = document.querySelector('#username').value;
     const p = document.querySelector('#password').value;
-    fetch('/user', {
+    fetch('http://localhost:3000/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

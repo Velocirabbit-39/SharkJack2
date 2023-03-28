@@ -16,14 +16,14 @@ app.use('/static', express.static(path.resolve(__dirname, 'public')));
 
 
 const uri =
-  'mongodb+srv://jonathanvaldes570:thisismypassword@shark-jack-2.4mhezaq.mongodb.net/test';
+  'mongodb+srv://olivia:thisismypassword@iterationproject.fasvdum.mongodb.net/?retryWrites=true&w=majority';
 
 const PORT = 3000;
 
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  dbName: 'Music',
+  dbName: 'SharkJack2',
 });
 mongoose.connection.once('open', () => {
   console.log('We in that Database');
