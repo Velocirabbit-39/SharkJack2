@@ -1,0 +1,47 @@
+{
+    "name": "Shark-Jack-2",
+    "version": "1.0.0",
+    "description": "Blackjack card game",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon server/server.js",
+        "build": "NODE_ENV=production webpack",
+        "dev": "NODE_ENV=development webpack serve & node server/server.js",
+        "front": "NODE_ENV=development webpack-dev-server --open --hot & node server/server.js",
+        "front2": "concurrently \"NODE_ENV=development webpack-dev-server --open --hot\" \"nodemon ./server/server.js\""
+    },
+    "nodemonConfig": {
+        "ignore": [
+            "build",
+            "client"
+        ]
+    },
+    "author": "Sid Brodsky, Michael Capone, Gavin Briggs, Victor Gulyak, Jonathan Valdes",
+    "license": "Pending",
+    "dependencies": {
+        "express": "^4.12.3",
+        "mongoose": "^6.7.5",
+        "nodemon": "^1.8.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "uuid": "^9.0.0",
+        "webpack": "^5.57.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.21.3",
+        "@babel/preset-env": "^7.20.2",
+        "@babel/preset-react": "^7.18.6",
+        "babel-loader": "^9.1.2",
+        "bcrypt": "^5.1.0",
+        "concurrently": "^6.5.1",
+        "cross-env": "^7.0.3",
+        "css-loader": "^6.7.3",
+        "file-loader": "^6.2.0",
+        "html-loader": "4.2.0",
+        "html-webpack-plugin": "^5.5.0",
+        "nodemon": "^2.0.7",
+        "style-loader": "^3.3.2",
+        "webpack-cli": "^4.8.0",
+        "webpack-dev-server": "^4.13.1"
+    }
+}
