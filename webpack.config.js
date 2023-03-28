@@ -41,7 +41,10 @@ module.exports = {
                 "style-loader",
                 "css-loader",
               ]
-            }
+            },
+            // {
+            //   test: { "\\.[jt]sx?$": "babel-jest" }
+            // },
         ]
     },
     devServer: {
