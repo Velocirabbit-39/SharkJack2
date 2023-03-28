@@ -11,8 +11,6 @@ function App() {
   const [showCreateAccount, setShowCreateAccount] = useState(false);
   const [userObject, setUserObject] = useState({});
 
-
-
   if (!isLoggedIn) {
     if(showCreateAccount){
       return <Signup setShowCreateAccount={setShowCreateAccount} setIsLoggedIn={setIsLoggedIn}/>

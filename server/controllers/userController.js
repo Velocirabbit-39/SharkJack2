@@ -4,7 +4,7 @@ const User = require('../models/userModel.js');
 const UserController = {
   createUser(req, res, next) {
     const { username, password } = req.body;
-    console.log(username, password);
+   
 
     User.create({ username, password, money: 100 })
       .then((data) => {

@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import Signup from './Signup.jsx';
 
-export default function Login({ setIsLoggedIn, setUserObject}) {
+export default function Login({
+  setIsLoggedIn,
+  setUserObject,
+  showCreateAccount,
+  setShowCreateAccount,
+}) {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -38,26 +43,32 @@ export default function Login({ setIsLoggedIn, setUserObject}) {
   };
 
   return (
-    <div className='loginContainer'>
-      <h1>Login </h1>
-      <p className='error'>Wrong Username and Password</p>
-      <label htmlFor='username'></label>
-      <input
-        id='username'
-        // placeholder='username'
-        // value={formData.username}
-        // onChange={(e) => handleChange(e)}
-      ></input>
-      {/* <label htmlFor='password'></label> */}
-      <input
-        id='password'
-        // placeholder='password'
-        // value={formData.password}
-        // onChange={(e) => handleChange(e)}
-      ></input>
-      <button type='button' onClick={handleSubmit}>
-        Submit
-      </button>
+    <div className='wrapper'>
+      <div className='loginContainer text-center'>
+        <h1 className='my-4'>Sharkjack 2 </h1>
+        <p className='error'>Wrong Username and Password</p>
+        <label htmlFor='username'></label>
+        <input
+          className='my-3 form-group'
+          id='username'
+          placeholder='username'
+        ></input>
+        {/* <label htmlFor='password'></label> */}
+        <input
+          className='my-3 form-group'
+          id='password'
+          placeholder='password'
+          // value={formData.password}
+          // onChange={(e) => handleChange(e)}
+        ></input>
+        <button
+          className=' submit btn btn-primary'
+          type='button'
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 }
