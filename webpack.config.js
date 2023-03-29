@@ -23,7 +23,8 @@ module.exports = {
             presets: [
               ['@babel/env', { targets: "defaults" }],
               ['@babel/react', { targets: "defaults" }],
-            ]
+            ],
+            plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
           }
         }
       },
