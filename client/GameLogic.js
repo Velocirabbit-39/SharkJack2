@@ -1,7 +1,7 @@
 const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
 
- const createDeck = () => {
+const createDeck = () => {
 	const deck = [];
 	for (const suit of suits) {
 		for (const value of cardValues) {
@@ -11,7 +11,7 @@ const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
 	return deck;
 }
 
- const shuffleDeck = (deck) => {
+const shuffleDeck = (deck) => {
 	for (let i = deck.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[deck[i], deck[j]] = [deck[j], deck[i]];
@@ -19,7 +19,7 @@ const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
 	return deck;
 }
 
- const dealCard = (deck) => {
+const dealCard = (deck) => {
 	return deck.pop();
 }
 
@@ -36,7 +36,7 @@ const getCardValue = (card) => {
 }
 
 
- const calculateHandScore = (hand) => {
+const calculateHandScore = (hand) => {
 	let score = 0;
 	let aces = 0;
 	for (const card of hand) {
@@ -53,7 +53,7 @@ const getCardValue = (card) => {
 }
 
 
- const getWinner = (playerHand, dealerHand) => {
+const getWinner = (playerHand, dealerHand) => {
 	const playerScore = calculateHandScore(playerHand);
 	const dealerScore = calculateHandScore(dealerHand);
 
@@ -81,11 +81,11 @@ const getCardImage = (c) => {
 	}
 	if (card.value in pictureCards) card.value = pictureCards[card.value]
 	// const path = `../assets/card-pictures/${card.value}_of_${card.suit}.png`;
-	const path = `/static/cardImageFolder/${card.value}_of_${card.suit}.png`
+	const path = `/static/cardImageFolder/${card.value}_of_${card.suit}.png`;
 	return path;
 }
 
-module.exports = { createDeck, shuffleDeck, dealCard, calculateHandScore, getWinner, getCardImage };
+module.exports = { createDeck, shuffleDeck, dealCard, getCardValue, calculateHandScore, getWinner, getCardImage };
 
 // export default createDeck ;
 // shuffleDeck, dealCard, calculateHandScore, getWinner, getCardImage 
