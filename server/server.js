@@ -20,14 +20,16 @@ const uri =
 
 const PORT = 3000;
 
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  dbName: 'SharkJack2',
-});
-mongoose.connection.once('open', () => {
-  console.log('We in that Database');
-});
+if (process.env.NODE_ENV !== 'test') {
+  mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: 'SharkJack2',
+  });
+  mongoose.connection.once('open', () => {
+    console.log('We in that Database');
+  });
+}
 
 // Static GET
 app.use('/build', express.static(path.join(__dirname, '../build')));
