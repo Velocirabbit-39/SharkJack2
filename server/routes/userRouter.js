@@ -5,7 +5,8 @@ const userController = require('../controllers/userController.js');
 const router = express.Router();
 
 router.post('/', userController.createUser, (req, res, next) => {
-  return next();
+  res.sendStatus(201);
+  // return next();
 });
 
 router.patch('/:username', userController.updateUser, (req, res) => {
@@ -17,7 +18,7 @@ router.post('/login', userController.logIn, (req, res) => {
 });
 
 router.get('/:username', userController.getUser, (req, res) => {
-  res.sendStatus(200);
+  res.sendStatus(201);
 });
 
 module.exports = router;
