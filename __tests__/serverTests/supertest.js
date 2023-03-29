@@ -1,16 +1,11 @@
 const request = require('supertest');
-
+const User = require('../../server/models/userModel.js');
 const server = 'http://localhost:3000';
 
-const db = require('../../server/testDb');
-
 describe('Route integration', () => {
-
-  beforeAll(async () => await db.connect());
-
-  afterEach(async () => await db.clearDatabase());
-  
-  afterAll(async () => await db.closeDatabase());
+  const username = 'test' + Math.random()*100;
+  const body = {username, password: 'test'}
+  console.log(username)
 
   describe('/', () => {
     describe('GET', () => {
@@ -22,9 +17,49 @@ describe('Route integration', () => {
       });
     });
   });
-  // describe('/user', () => {
-  //   describe('POST', () => {
-  //     it('')
-  //   })
-  // })
+  describe('/user', () => {
+    
+    describe('POST /', () => {
+      it('responds with 201 status code', () => {
+        return request(server)
+          .post('/user')
+          .send(JSON.stringify(body))
+          .set('Content-Type', 'application/json')
+          .expect(201);
+      })
+    })
+
+    describe('PATCH', () => {
+      body.money = 1000;
+      body.handsWon = 2;
+      it('responds with 200 status code and json response', () => {
+        return request(server)
+          .patch(`/user/${username}`)
+          .send(JSON.stringify(body))
+          .set('Content-Type', 'application/json')
+          .expect(200)
+          .expect('Content-Type', /json/);
+      })
+    })
+
+    describe('POST /login', () => {
+      it('responds with 200 status code and json response', () => {
+        return request(server)
+          .post('/user/login')
+          .send(JSON.stringify(body))
+          .expect(200)
+          .expect('Content-Type', /json/);
+      })
+    })
+
+    describe('GET user', () => {
+      it('responds with 201 status code', () => {
+        return request(server)
+          .get(`/user/${username}`)
+          .send(JSON.stringify(body))
+          .expect(201)
+      })
+    })
+
+  })
 })

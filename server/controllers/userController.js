@@ -11,6 +11,7 @@ const UserController = {
         return next();
       })
       .catch((err) => {
+        console.log('userController error: ', err);
         return next(err);
       });
   },

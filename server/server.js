@@ -20,7 +20,7 @@ const uri =
 
 const PORT = 3000;
 
-if (process.env.NODE_ENV !== 'test') {
+// if (process.env.NODE_ENV !== 'test') {
   mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -29,7 +29,7 @@ if (process.env.NODE_ENV !== 'test') {
   mongoose.connection.once('open', () => {
     console.log('We in that Database');
   });
-}
+// }
 
 // Static GET
 app.use('/build', express.static(path.join(__dirname, '../build')));
@@ -40,7 +40,9 @@ app.get('/', (req, res) => {
 
 //routes request to endpoint user for login/signup functionality
 app.use('/user', userRouter, (req, res) => {
-  res.status(200);
+  res.sendStatus(200);
 });
 
-app.listen(3000, () => console.log('we listening'));
+// app.listen(3000, () => console.log('we listening'));
+
+module.exports = app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
