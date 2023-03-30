@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavBar = (props) => {
+const NavBar = () => {
   return (
     <div className='navbar navbar-expand-md navbar-dark fixed-top bg-dark px-4'>
       <div className='navBarContainer'>
