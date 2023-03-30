@@ -37,7 +37,7 @@ describe('Unit testing React components', () => {
     });
   });
 
-  // testing Opponent component
+  // testing component
   describe('Opponent test', () => {
     let opponent;
 
