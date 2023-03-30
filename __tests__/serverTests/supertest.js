@@ -1,5 +1,5 @@
 const request = require('supertest');
-const User = require('../../server/models/userModel.js');
+// const User = require('../../server/models/userModel.js');
 const server = 'http://localhost:3000';
 
 describe('Route integration', () => {
