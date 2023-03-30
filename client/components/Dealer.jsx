@@ -11,5 +11,4 @@ const Dealer = () => {
 }
 
 
-
 export default Dealer;
