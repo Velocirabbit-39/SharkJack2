@@ -1,7 +1,7 @@
 import React from 'react';
 import shark from '../assets/shark.png'
 
-const Dealer = (props) => {
+const Dealer = () => {
 
   return (
       <div className='dealerContainer'>
